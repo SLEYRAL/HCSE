@@ -1,5 +1,9 @@
 <?php
 
+use App\Enum\StatusProfile;
+use App\Http\Resources\ProfilePublicResource;
+use App\Models\Profile;
+use Illuminate\Http\Request;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +25,7 @@ Route::middleware('auth:sanctum')->post('admin/profile', [ProfileController::cla
 Route::middleware('auth:sanctum')->put('admin/profile/{profile}', [ProfileController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('admin/profile/{profile}', [ProfileController::class, 'delete']);
 
+Route::get('/profile', function (Request $request) {
+    return ProfilePublicResource::collection(
+        Profile::where('status', StatusProfile::Active)->get());
+});
