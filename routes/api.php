@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->post('admin/comment', [CommentController::class, 'store']);
+
+Route::middleware('auth:sanctum')->post('admin/profile', [ProfileController::class, 'store']);
+Route::middleware('auth:sanctum')->put('admin/profile/{profile}', [ProfileController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('admin/profile/{profile}', [ProfileController::class, 'delete']);
 

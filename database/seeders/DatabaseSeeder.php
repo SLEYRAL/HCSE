@@ -17,10 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         \App\Models\Administrator::factory(5)->create();
-        \App\Models\Profile::factory()->create(['status' => StatusProfile::Active]);
         \App\Models\Profile::factory(10)->create();
          \App\Models\Comment::factory(10)->create();
-         User::factory(5)->create();
+          User::factory(5)->create();
 
 
 
