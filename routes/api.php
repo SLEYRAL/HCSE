@@ -1,5 +1,8 @@
 <?php
 
+use App\Enum\StatusProfile;
+use App\Http\Resources\ProfilePublicResource;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/profile', function (Request $request) {
+    return ProfilePublicResource::collection(
+        Profile::where('status', StatusProfile::Active)->get());
 });
