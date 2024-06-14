@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('firstname');
             $table->string('image');
-            $table->enum('status', ['inactif', 'en attente', 'actif']);
+            $table->enum('status', \App\Enum\StatusProfile::toArray());
             $table->foreignIdFor(\App\Models\User::class)->constrained()->onDelete('CASCADE');
             $table->timestamps();
         });
