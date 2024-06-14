@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->post('admin/profile', [ProfileController::class, 'store']);
+Route::middleware('auth:sanctum')->put('admin/profile/{profile}', [ProfileController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('admin/profile/{profile}', [ProfileController::class, 'delete']);
+
