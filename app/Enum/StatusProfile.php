@@ -13,7 +13,7 @@ enum StatusProfile: string
     {
         $array = [];
         foreach (self::cases() as $case) {
-            $array[$case->value] = $case->name;
+            $array[] = $case->value;
         }
         return $array;
     }
