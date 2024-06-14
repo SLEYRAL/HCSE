@@ -44,6 +44,9 @@ class ProfileController extends Controller
 
     public function delete(int $id) {
         $profile = Profile::find($id);
+        if(!Auth::user()->is_admin){
+            return response('', Response::HTTP_FORBIDDEN);
+        }
         $profile?->delete();
         return response()->json(null);
     }
